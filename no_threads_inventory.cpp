@@ -1,26 +1,28 @@
 #include <iostream>
-#include <vector>
 #include <ctime>
 
 using namespace std;
 
-int main() {
-    srand(static_cast<unsigned int>(time(nullptr)));
-    vector<int> stock(1000);
-    int low_stock_count = 0;
+const int PRODUCT_COUNT = 1000;
+int stock[PRODUCT_COUNT];
+int low_stock_count = 0;
 
-    for (int i = 0; i < 1000; ++i) {
+int main() {
+    srand(time(0));
+
+    for (int i = 0; i < PRODUCT_COUNT; ++i) {
         stock[i] = rand() % 101;
     }
 
-    for (int i = 0; i < 1000; ++i) {
+    for (int i = 0; i < PRODUCT_COUNT; ++i) {
         if (stock[i] < 10) {
             cout << "[ALERT] Product " << i << ": " << stock[i] << " units left\n";
             ++low_stock_count;
         }
     }
 
-    cout << "Total low-stock items: " << low_stock_count << "\n";
-    cout << "Jhevan P. Baque";
+    cout << "Total low-stock items: " << low_stock_count << endl;
+    cout << "Jhevan P. Baque" << endl;
+
     return 0;
 }
