@@ -115,16 +115,13 @@ void TestCase4() {
     reset_rooms(0);
     srand(42);
 
-    // Step 1: Create a list of 50 unique room indices
     vector<int> room_indices(TOTAL_ROOMS);
     for (int i = 0; i < TOTAL_ROOMS; ++i) {
         room_indices[i] = i;
     }
 
-    // Step 2: Shuffle the list randomly
     random_shuffle(room_indices.begin(), room_indices.end());
 
-    // Step 3: Launch 4 threads, each booking a unique set of rooms
     vector<thread> threads;
     for (int i = 0; i < 4; ++i) {
         threads.emplace_back([i, &room_indices]() {
